@@ -2,7 +2,7 @@
 
 An experiment (and political statement) to see if it's possible to lookup address information for a postcode based on Open Data.
 
-This library combines the OrdnanceSurvey Open-CodePoint data with data from OpenStreetMap to give road, city, etc. for UK postcodes.  It's imperfact (especially for postcodes on corners) but given that it's free, unlike the official Postcode Address Fil from Royal Mail, that's probably forgivable.  Improvements welcomed, though!
+This library combines the OrdnanceSurvey Open-CodePoint data with data from OpenStreetMap to give road, city, etc. for UK postcodes.  It's imperfact (especially for postcodes on corners) but given that it's free, unlike the official Postcode Address File from Royal Mail, that's probably forgiveable.  Improvements welcomed!
 
 You need to download a copy of the Open-CodePoint data to use this library - Just get it from https://www.ordnancesurvey.co.uk/opendatadownload and extract it into ./codepoint/ (Docs and all).  The  library expacts to find the actual csv files in ./codepoint/Data/CSV/ but this can be overridden when the object is instantiated if the csv files are elsewhere.
 
@@ -39,3 +39,6 @@ catch(Exception $e)
 $ php postcode.php POSTCODE
 $ php postcode.php so171bj
 ```
+
+## Improvements
+City, locality etc should be fairly accurate.  Postcodes near junctions cause problems and often result in the wrong road, though.  Other signals could be used to clean that up, perhaps searching for the Postcode via Google to see which road names come up?
