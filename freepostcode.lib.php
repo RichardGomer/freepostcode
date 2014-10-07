@@ -5,7 +5,7 @@
  *
  * Because the PAF should absolutely be open data and it is outrageous that our politicians gave it away to a private company
  *
- * Feedback to richardgomer on github.  Lawsuits can be placed up your bottom.
+ * Feedback to richardgomer on github
  
  * Requires:
  *   - a copy of the Ordnance Survey's Open Codepoint data, to convert postcodes into Easting/Northing
@@ -35,6 +35,12 @@ class FreePostcode
         // Ensure the dirname has a trailing slash
         if(!preg_match('@/$@', $codePointDir))
             $codePointDir .= '/';
+        
+        if(!file_exists($codePointDir))
+        {
+            throw new MissingCodePointException("Couldn't find OS CodePoint data in $codePointDir - If you don't have a copy of OpenCodePoint you can download one from https://www.ordnancesurvey.co.uk/opendatadownload/ and extract it into ./codepoint/");
+        }
+        
         
         $this->data = $codePointDir;
     }
